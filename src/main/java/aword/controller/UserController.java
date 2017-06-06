@@ -14,7 +14,7 @@ public class UserController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
     public Response login(){
-
+        return new Response().success();
     }
 
 

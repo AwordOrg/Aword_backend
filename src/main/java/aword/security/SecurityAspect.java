@@ -24,20 +24,13 @@ public class SecurityAspect {
     private static final String DEFAULT_TOKEN_NAME = "X-Token";
 
     private TokenManager tokenManager;
-    private String tokenName;
+    private String tokenName=DEFAULT_TOKEN_NAME;
 
     @Autowired
     public void setTokenManager(TokenManager tokenManager) {
         this.tokenManager = tokenManager;
     }
 
-    @Autowired
-    public void setTokenName(String tokenName) {
-        if (StringUtil.isEmpty(tokenName)) {
-            tokenName = DEFAULT_TOKEN_NAME;
-        }
-        this.tokenName = tokenName;
-    }
 
 
     //声明切点（作用：拦截在方法上标注了@RequestMapping注解的请求）
