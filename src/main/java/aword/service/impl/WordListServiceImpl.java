@@ -5,8 +5,6 @@ import aword.entity.Word;
 import aword.entity.WordHouse;
 import aword.service.WordListService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -24,20 +24,20 @@ public class ReviewController {
     }
 
     @RequestMapping(value = "/easy",method = RequestMethod.GET)
-    public Response getEasy(){
-        Word word=wordListService.acceptEsay();
+    public Response getEasy(@RequestParam(name = "wid")Long wid){
+        Word word=wordListService.acceptEsay(wid);
         return new Response().success(word);
     }
 
     @RequestMapping(value = "/know",method = RequestMethod.GET)
-    public Response getKnow(){
-        Word word=wordListService.acceptKnown();
+    public Response getKnow(@RequestParam(name = "wid")Long wid){
+        Word word=wordListService.acceptKnown(wid);
         return new Response().success(word);
     }
 
     @RequestMapping(value = "/unknow",method = RequestMethod.GET)
-    public Response getUnknown(){
-        Word word=wordListService.acceptUnknown();
+    public Response getUnknown(@RequestParam(name = "wid")Long wid){
+        Word word=wordListService.acceptUnknown(wid);
         return new Response().success(word);
     }
 }
