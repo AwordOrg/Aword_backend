@@ -1,24 +1,45 @@
 package aword.entity;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 单词库(每个单词库对应一个user)
  * Created by Lee on 2017/5/12 0012.
  */
+@Entity
 public class WordHouse {
-    private Integer id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.EAGER)
     private List<Word> wordListNo=new ArrayList<Word>();//不复习的单词List
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.EAGER)
     private List<Word> wordList0=new ArrayList<Word>();//待复习的单词list（对应status为0的）
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.EAGER)
     private List<Word> wordList1=new ArrayList<Word>();//（对应status为1的）
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.EAGER)
     private List<Word> wordList2=new ArrayList<Word>();//（对应status为2的）
 
-    public Integer getId() {
+    @OneToOne(mappedBy = "word_house",fetch = FetchType.EAGER,optional = false)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,22 +1,29 @@
 package aword.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
+
 /**
  * Created by Lee on 2017/5/12 0012.
  */
+@Entity
 public class User {
-    private Integer id;
+    private Long id;
     private String name;
     private String password;
     private String email;//用于激活和找回密码的邮箱
 
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private WordHouse wordHouse;//单词库
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

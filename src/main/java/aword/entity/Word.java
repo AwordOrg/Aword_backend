@@ -1,11 +1,19 @@
 package aword.entity;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
+ * 单词
  * Created by Lee on 2017/5/12 0012.
  */
+@Entity
 public class Word {
-    private Integer id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;//单词
     private String symbol;//音标
     private String mean;//释义
@@ -16,11 +24,11 @@ public class Word {
     public Word() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
