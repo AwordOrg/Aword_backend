@@ -3,6 +3,9 @@ package aword.service.impl;
 import aword.entity.User;
 import aword.entity.Word;
 import aword.entity.WordHouse;
+import aword.repository.UserDao;
+import aword.repository.WordDao;
+import aword.repository.WordHouseDao;
 import aword.service.WordListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,9 +38,11 @@ public class WordListServiceImpl implements WordListService {
     @Override
     public void setWordListForLearning(Long uid) {
         User user=userDao.findOne(uid);
-        List<Word> list0=wordHouseDao.findTop12ByUserAndStatus(user,0);
-        List<Word> list1=wordHouseDao.findTop15ByUserAndStatus(user,1);
-        List<Word> list2=wordHouseDao.findTop3ByUserAndStatus(user,2);
+        WordHouse wordHouse=wordHouseDao.findByUser(user);
+
+        List<Word> list0=wordHouse.getWordList0();
+        List<Word> list1=wordHouse.getWordList1();
+        List<Word> list2=wordHouse.getWordList2();
         for (Word word:list0){
             reviewWordList.add(word);
         }
@@ -123,7 +128,7 @@ public class WordListServiceImpl implements WordListService {
         Word ww=wordDao.findOne(wid);
         ww.setCount(0);
         ww.setStatus(0);
-        userDao.save(ww);
+        wordDao.save(ww);
         reviewWordList.add(ww);
 
         Word word=reviewWordList.get(0);
