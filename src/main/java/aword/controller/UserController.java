@@ -24,7 +24,7 @@ public class UserController {
     private static final String DEFAULT_TOKEN_NAME = "X-Token";
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     private TokenManager tokenManager;

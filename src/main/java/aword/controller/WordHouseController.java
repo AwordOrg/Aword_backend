@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class WordHouseController {
 
     @Autowired
-    WordHouseService wordHouseService;
+    private WordHouseService wordHouseService;
 
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     public Response addWordHouse(@RequestBody WordHouse wordHouse){

@@ -11,32 +11,32 @@ import java.util.List;
 public interface WordListService {
 
     /**
-     * 从status为0，1，2的单词中随机取15，12，3个（如果少于，则能取多少取多少）
-     * @return 返回一个供User复习的单词队列
+     * 从status为0，1，2的单词中随机取12，15，3个（如果少于，则能取多少取多少）
+     * 一个供User复习的单词队列
      */
-    List<Word> getWordListForLearnning();
+    void setWordListForLearning(Long uid);
 
     /**
      * 从getWordListForLearnning()返回的队列中取得一个给前端
      * @return
      */
-    Word getWordForLearnning();
+    Word getWordForLearnning(Long uid);
 
     /**
      * 接受到『太简单』时执行的业务
      * @return 返回下一个单词给前端
      */
-    Word acceptEsay();
+    Word acceptEsay(Long wid);
 
     /**
      * 接受到『认识』时执行的业务
      * @return 返回下一个单词给前端
      */
-    Word acceptKnown();
+    Word acceptKnown(Long wid);
 
     /**
      * 接受到『不认识』时执行的业务
      * @return 返回下一个单词给前端
      */
-    Word acceptUnknown();
+    Word acceptUnknown(Long wid);
 }

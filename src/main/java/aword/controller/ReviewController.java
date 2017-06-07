@@ -5,10 +5,7 @@ import aword.entity.User;
 import aword.entity.Word;
 import aword.service.WordListService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 复习
@@ -18,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/review")
 public class ReviewController {
     @Autowired
-    WordListService wordListService;
+    private WordListService wordListService;
 
     @RequestMapping(value = "/get",method = RequestMethod.GET)
-    public Response getReviewWord(){
-        Word word=wordListService.getWordForLearnning();
+    public Response getReviewWord(@RequestParam(name = "uid")Long uid){
+        Word word=wordListService.getWordForLearnning(uid);
         return new Response().success(word);
     }
 

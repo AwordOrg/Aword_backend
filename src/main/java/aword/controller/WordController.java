@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class WordController {
 
     @Autowired
-    WordService wordService;
+    private WordService wordService;
 
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     public Response addWord(@RequestBody Word word){
