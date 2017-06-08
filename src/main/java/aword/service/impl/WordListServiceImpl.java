@@ -30,6 +30,7 @@ public class WordListServiceImpl implements WordListService {
     private WordDao wordDao;
 
     private List<Word> reviewWordList;
+    private Long UID=0L;
 
     /**
      * 从status为0，1，2的单词中随机取12，15，3个（如果少于，则能取多少取多少）
@@ -71,11 +72,15 @@ public class WordListServiceImpl implements WordListService {
     private void finish(Word word) {//todo 当word为null时，就是用户不再拿单词的时候，这时候将队列置null，以便可以给之后的用户复用这个 service
         if (word==null){
             reviewWordList=null;
+            UID=0L;
         }
     }
 
     private void init(Long uid) {
         //todo 设初值,当用户a使用这个service时，可以保证若干次请求都是使用同一个队列，直到用户a不需要再使用这个service时，会调用finish使其恢复初始状态，以便其他用户使用
+        if (uid!=0L&&!uid.equals(UID)){//todo 可以防止用户a没复习完就退出，然后用户b读到用户a的脏数据，但是不能解决用户a和用户b两个同时请求数据的情况
+            UID=uid;
+        }
         if (reviewWordList==null){
             reviewWordList=new ArrayList<>();
             setWordListForLearning(uid);
