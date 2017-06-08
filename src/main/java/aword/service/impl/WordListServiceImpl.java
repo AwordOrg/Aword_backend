@@ -8,6 +8,7 @@ import aword.repository.WordDao;
 import aword.repository.WordHouseDao;
 import aword.service.WordListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.List;
  * Created by Lee on 2017/6/7 0007.
  */
 @Service
+@Scope(value = "request")
 public class WordListServiceImpl implements WordListService {
 
     @Autowired
