@@ -1,6 +1,7 @@
 package aword.service;
 
 import aword.entity.User;
+import aword.entity.Word;
 import aword.repository.UserDao;
 import aword.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,12 @@ public class UserService {
         if (StringUtil.isEmpty(userName)||StringUtil.isEmpty(password)){
             throw new Exception("注册失败，用户名或密码为空");
         }
+        userDao.save(user);
+    }
+
+    public void addWordToWordList0(Word word,String username) {
+        User user=userDao.findByName(username);
+        user.getWordList0().add(word);
         userDao.save(user);
     }
 }

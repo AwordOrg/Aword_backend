@@ -2,7 +2,6 @@ package aword.service.impl;
 
 import aword.entity.User;
 import aword.entity.Word;
-import aword.entity.WordHouse;
 import aword.repository.UserDao;
 import aword.repository.WordDao;
 import aword.repository.WordHouseDao;
@@ -25,8 +24,6 @@ public class WordListServiceImpl implements WordListService {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private WordHouseDao wordHouseDao;
 
     @Autowired
     private WordDao wordDao;
@@ -40,11 +37,11 @@ public class WordListServiceImpl implements WordListService {
     @Override
     public void setWordListForLearning(Long uid) {
         User user=userDao.findOne(uid);
-        WordHouse wordHouse=wordHouseDao.findByUser(user);
+        //WordHouse wordHouse=wordHouseDao.findByUser(user);
 
-        List<Word> list0=wordHouse.getWordList0();
-        List<Word> list1=wordHouse.getWordList1();
-        List<Word> list2=wordHouse.getWordList2();
+        List<Word> list0=user.getWordList0();
+        List<Word> list1=user.getWordList1();
+        List<Word> list2=user.getWordList2();
         for (Word word:list0){
             reviewWordList.add(word);
         }

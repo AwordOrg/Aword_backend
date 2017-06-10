@@ -2,6 +2,7 @@ package aword.controller;
 
 import aword.entity.Response;
 import aword.entity.User;
+import aword.entity.Word;
 import aword.security.IgnoreSecurity;
 import aword.security.TokenManager;
 import aword.security.web.WebContext;
@@ -73,6 +74,19 @@ public class UserController {
         tokenManager.removeToken(token);
         return new Response().success();
     }
+
+    /**
+     * 添加生词
+     * @return
+     */
+    @RequestMapping(value = "/addWord",method = RequestMethod.POST)
+    public Response addWord(Word word,String username){
+        //把生词加入wordList0
+        userService.addWordToWordList0(word,username);
+        return new Response().success();
+    }
+
+
 
     //todo 邮箱验证以及通过验证邮箱找回密码的需求
 
