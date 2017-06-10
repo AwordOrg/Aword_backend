@@ -5,6 +5,7 @@ import aword.entity.User;
 import aword.security.IgnoreSecurity;
 import aword.security.TokenManager;
 import aword.security.web.WebContext;
+import aword.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,7 +58,7 @@ public class UserController {
      */
     @RequestMapping(value = "/signin" ,method = RequestMethod.POST)
     @IgnoreSecurity
-    public Response signin(@RequestBody User user){
+    public Response signin(@RequestBody User user) throws Exception {
         userService.signIn(user);
         return new Response().success();
     }

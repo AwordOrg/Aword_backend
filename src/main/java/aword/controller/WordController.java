@@ -2,6 +2,7 @@ package aword.controller;
 
 import aword.entity.Response;
 import aword.entity.Word;
+import aword.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
