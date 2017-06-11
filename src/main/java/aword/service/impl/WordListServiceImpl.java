@@ -36,12 +36,15 @@ public class WordListServiceImpl implements WordListService {
      */
     @Override
     public void setWordListForLearning(Long uid) {
-        User user=userDao.findOne(uid);
+        //User user=userDao.findOne(uid);
         //WordHouse wordHouse=wordHouseDao.findByUser(user);
+        User user0=userDao.findByIdFetchWordList0(uid);
+        User user1=userDao.findByIdFetchWordList1(uid);
+        User user2=userDao.findByIdFetchWordList2(uid);
 
-        List<Word> list0=user.getWordList0();
-        List<Word> list1=user.getWordList1();
-        List<Word> list2=user.getWordList2();
+        List<Word> list0=user0.getWordList0();
+        List<Word> list1=user1.getWordList1();
+        List<Word> list2=user2.getWordList2();
         for (Word word:list0){
             reviewWordList.add(word);
         }
