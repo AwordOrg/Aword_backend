@@ -5,6 +5,7 @@ import aword.entity.User;
 import aword.entity.Word;
 import aword.service.WordListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping(value = "/review")
+@Scope(value = "session")
 public class ReviewController {
     @Autowired
     private WordListService wordListService;

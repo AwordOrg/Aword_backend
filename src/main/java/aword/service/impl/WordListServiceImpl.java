@@ -4,7 +4,6 @@ import aword.entity.User;
 import aword.entity.Word;
 import aword.repository.UserDao;
 import aword.repository.WordDao;
-import aword.repository.WordHouseDao;
 import aword.service.WordListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
