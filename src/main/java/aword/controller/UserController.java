@@ -3,6 +3,7 @@ package aword.controller;
 import aword.entity.Response;
 import aword.entity.User;
 import aword.entity.Word;
+import aword.entity.wrapper.AddWordWrapper;
 import aword.security.IgnoreSecurity;
 import aword.security.TokenManager;
 import aword.security.web.WebContext;
@@ -80,9 +81,15 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/addWord",method = RequestMethod.POST)
-    public Response addWord(Word word,String username){
+    public Response addWord(@RequestBody AddWordWrapper addWordWrapper){
         //把生词加入wordList0
-        userService.addWordToWordList0(word,username);
+        Word word=new Word();
+        word.setName(addWordWrapper.getName());
+        word.setSymbol(addWordWrapper.getSymbol());
+        word.setMean(addWordWrapper.getMean());
+        word.setCount(addWordWrapper.getCount());
+        word.setStatus(addWordWrapper.getStatus());
+        userService.addWordToWordList0(word,addWordWrapper.getUsername());
         return new Response().success();
     }
 

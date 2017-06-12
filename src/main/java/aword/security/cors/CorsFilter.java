@@ -20,7 +20,7 @@ import java.util.List;
 @WebFilter(
         urlPatterns = "/*",
         initParams = {
-                @WebInitParam(name = "allowOrigin",value = "*"),
+                @WebInitParam(name = "allowOrigin",value = "lee.com"),
                 @WebInitParam(name = "allowMethods",value = "GET,POST,PUT,DELETE,OPTIONS"),
                 @WebInitParam(name = "allowCredentials",value = "true"),
                 @WebInitParam(name = "allowHeaders",value = "Content-Type,X-Token")

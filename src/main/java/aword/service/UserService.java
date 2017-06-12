@@ -41,7 +41,7 @@ public class UserService {
     }
 
     public void addWordToWordList0(Word word,String username) {
-        User user=userDao.findByName(username);
+        User user=userDao.findByNameFetchWordList0(username);
         user.getWordList0().add(word);
         userDao.save(user);
     }
